@@ -1,14 +1,14 @@
 #pragma once
 
-/*	Standard NonCopyable mixin.
+/*  Standard NonCopyable mixin.
  * */
 class NonCopyable
 {
 public: 
-	NonCopyable ( const NonCopyable& ) = delete;
+    NonCopyable ( const NonCopyable& ) = delete;
 public:
-	NonCopyable& operator=( const NonCopyable& ) = delete;
+    NonCopyable& operator=( const NonCopyable& ) = delete;
 protected:
-	NonCopyable() = default;
+    NonCopyable() = default;
 };
 
