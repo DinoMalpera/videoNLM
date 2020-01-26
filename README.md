@@ -1,19 +1,19 @@
 # VideoNLM
 
-Implementation of Non-Local Means noise reduction algorithm for video. Where the basic NLM algorithm collects statistics from single image (single frame, the one being denoised), video NLM takes advantage of the fact that successive frames in video are highly correlated.
+Implementation of Non-Local Means noise reduction algorithm for video. Where the basic NLM algorithm collects statistics from single image (single frame, the one being denoised), video NLM takes advantage of the fact that successive frames in video are highly correlated.<br/>
 Implemented as in [paper by Buades](https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/Buades-NonLocal.pdf).
 
-##Dependencies
+## Dependencies
 
-Compiler supporting C++17
+Compiler supporting C++17<br/>
 Boost
 
-##Status
+## Status
 
-Currently VNLM is in it's first iteration - basic functionallity, nonoptimized (except multithreading).
+Currently VNLM is in it's first iteration - basic functionallity, nonoptimized (except multithreading).<br/>
 Next goal would be to play around with multi-resolution approach - should be way way faster.
 
-##Example
+## Example
 
 Example use of VNLM for single image using TIFFIO library.
 
@@ -38,11 +38,10 @@ std::transform(
 	);
 
 Frame<Color_Space_RGB> fr( &frame_data_holder[0], frameSize, 0);
+Frame<Color_Space_RGB> outputPic( &output_frame[0], frameSize, 0 );
 
 FrameSequence<Color_Space_RGB> frameSequence;
 frameSequence.push_back(fr);
-
-Frame<Color_Space_RGB> outputPic( &output_frame[0], frameSize, 0 );
 
 NLMdenoiser nlm;
 nlm.Denoise( frameSequence, outputPic );
