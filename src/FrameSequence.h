@@ -20,7 +20,8 @@ namespace VNLM
     
     public:
         FrameSequence(
-                const unsigned int size_of_sequence )
+                const unsigned int size_of_sequence
+        )
             :   frames  (size_of_sequence)
             ,   center_frame_index  ( size_of_sequence / 2U )
         {}

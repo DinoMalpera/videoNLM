@@ -18,8 +18,8 @@ namespace VNLM
             constexpr
             explicit
             iterator(
-                            Pixel_Range_Iterator    pt,
-                    const   Every_Pixel_in_a_Patch&         swr_data
+                            Pixel_Range_Iterator     pt,
+                    const   Every_Pixel_in_a_Patch&  swr_data
             ) noexcept
                 :   it          (pt)
                 ,   swr_data    (swr_data)

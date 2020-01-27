@@ -5,8 +5,18 @@
 namespace VNLM
 {
 
+    /*  Grayscale policy
+    * */
     using Color_Space_Grayscale = float;
     
+    /*  RGB policy
+    *
+    *   Holds color information and bunch of operators
+    *   to make it's interface compliant with float;
+    *   NLM algorithm doesn't care what per-pixel data
+    *   represents and how it's encoded. Let's keep it
+    *   color space agnostic.
+    * */
     class Color_Space_RGB
     {
     public:

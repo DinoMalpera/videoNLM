@@ -11,6 +11,7 @@ namespace VNLM
      *  for a single image (single frame). Depending on
      *  the pixel_value_type policy colors can be expressed
      *  in different color spaces.
+     *  Image pixel data expected to be float [0.0f,1.0f].
      * */
     template <typename pixel_value_type>
     class Frame
@@ -21,6 +22,9 @@ namespace VNLM
     // interface
     
     public:
+	/*  Frame constructor.
+	*   Image pixel (per channel) data expected to be float [0.0f,1.0f].
+	* */
         Frame(
                 const PixelArray    data,
                 const FrameSize&    frameSize,

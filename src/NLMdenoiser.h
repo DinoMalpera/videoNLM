@@ -11,9 +11,10 @@ namespace VNLM
     class NLMparams;
     
     /*  Video Non-Local Means denoiser class.
-     *  Performs NLM denoising on the frame of a video,
+     *  Performs NLM denoising on a frame of a video,
      *  but instead of using just the one frame to gather statistics
      *  it uses neighbouring frames as well.
+     *  Image pixel (per channel) data expected to be float [0.0f,1.0f].
      * */
     class NLMdenoiser
     {
@@ -25,7 +26,7 @@ namespace VNLM
         Denoise(
                 const   FrameSequence<Pixel_Value_policy>&  frameSequence,
                         Frame<Pixel_Value_policy>&          result,
-                const NLMparams& params );
+                const   NLMparams&                          params );
                 
                 
         // methods
@@ -36,7 +37,7 @@ namespace VNLM
         denoise(
                 const   FrameSequence<Pixel_Value_policy>&  frameSequence,
                         Frame<Pixel_Value_policy>&          result,
-                const   NLMparams& params );
+                const   NLMparams&                          params );
     };
 
 }
