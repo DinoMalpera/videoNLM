@@ -34,7 +34,7 @@ namespace VNLM
             ,   frameSize   (&frameSize)
             ,   frame       (frame)
         {
-            VNLM_ASSERT( nullptr == data )
+            VNLM_ASSERT( nullptr != data )
         }
     public:
         pixel_value_type&

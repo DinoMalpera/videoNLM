@@ -30,7 +30,12 @@ namespace VNLM
         push_back(
                 const Frame<Pixel_Value_policy>& fr )
         {
-            VNLM_ASSERT( frames.size() ? (fr.getFrameSize()==frames[0].getFrameSize()) : true )
+            VNLM_ASSERT( frames.size()
+                         ?
+                         (    (fr.getFrameSize().size_x==frames[0].getFrameSize().size_x)
+                           && (fr.getFrameSize().size_y==frames[0].getFrameSize().size_y))
+                         :
+                         true )
             frames.push_back( fr );
         }
     public:
