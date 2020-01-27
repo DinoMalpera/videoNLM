@@ -28,7 +28,7 @@ std::transform(
 	raster,
 	raster+number_of_pixels,
 	frame_data_holder.begin(),
-	[](const unsigned int& c) -> Color_Space_RGB
+	[](const unsigned int& c) -> auto
 	{
 		return Color_Space_RGB(
 			TIFFGetR(c)/255.0f,
