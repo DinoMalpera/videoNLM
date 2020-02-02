@@ -2,8 +2,10 @@
 
 Implementation of Non-Local Means noise reduction algorithm for video. Where the basic NLM algorithm collects statistics from a single image (single frame - the one being denoised), video NLM takes advantage of the fact that successive frames in video are highly correlated.<br/>
 VNLM uses policy-based design; image color space, distribution function and other aspects of the algorithm are expressed as policies.<br/>
-Implemented as in [paper by Buades](https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/Buades-NonLocal.pdf).
+Implemented as in [paper by Buades](https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/Buades-NonLocal.pdf).<br />
+<p align="center">
 ![The effect of VNLM](images/vnlm.jpg)
+</p>
 
 ### Dependencies
 
