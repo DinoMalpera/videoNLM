@@ -4,7 +4,7 @@ Implementation of Non-Local Means noise reduction algorithm for video. Where the
 VNLM uses policy-based design; image color space, distribution function and other aspects of the algorithm are expressed as policies.<br/>
 Implemented as in [paper by Buades](https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/Buades-NonLocal.pdf).<br />
 <p align="center">
-![The effect of VNLM](images/vnlm.jpg)
+<img src="images/vnlm.jpg">
 </p>
 
 ### Dependencies
