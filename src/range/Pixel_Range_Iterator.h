@@ -39,7 +39,7 @@ namespace VNLM
     public:
         constexpr
         Pixel_Range_Iterator&
-        operator*()
+        operator*() noexcept
         {
             return *this;
         }
@@ -67,6 +67,7 @@ namespace VNLM
             return ( _end.y != y );
         }
     public:
+        constexpr
         Pixel_Range_Iterator
         operator+(
                 const unsigned int off ) const noexcept

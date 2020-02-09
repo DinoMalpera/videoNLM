@@ -7,6 +7,10 @@
 namespace VNLM
 {
 
+    /*  Iterates over every pixel in the search window.
+    *
+    *   Scales the window down when it crosses the border.
+    */
     class Every_Pixel_in_SearchWindow_of_Every_Frame
     {
     public:

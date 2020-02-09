@@ -7,6 +7,8 @@
 namespace VNLM
 {
 
+    /*  Iterates over every pixel in the frame.
+    */
     class Every_Pixel_In_a_Frame : private NonCopyable
     {
     public:

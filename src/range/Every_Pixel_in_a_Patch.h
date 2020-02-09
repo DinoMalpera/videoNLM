@@ -9,6 +9,10 @@
 namespace VNLM
 {
 
+    /*  Iterates over every pixel in the patch.
+    *
+    *   Handles cases when the patch crosses frame border.
+    */
     class Every_Pixel_in_a_Patch : private NonCopyable
     {
     private:
@@ -66,10 +70,10 @@ namespace VNLM
             getY() const noexcept
             {
                 const unsigned int ret = remap_local_to_global_and_wrap(
-                                                        it.getY(),
-                                                        swr_data.radius,
-                                                        swr_data.center_point.y,
-                                                        swr_data.frameSize.size_y );
+                    it.getY(),
+                    swr_data.radius,
+                    swr_data.center_point.y,
+                    swr_data.frameSize.size_y );
                 VNLM_ASSERT( ret < swr_data.frameSize.size_y )
                 return ret;
             }
@@ -126,15 +130,16 @@ namespace VNLM
             
         private:
                     Pixel_Range_Iterator    it;
-            const   Every_Pixel_in_a_Patch&     swr_data;
+            const   Every_Pixel_in_a_Patch& swr_data;
         };
     public:
+        constexpr
         explicit
         Every_Pixel_in_a_Patch(
                 const   Pixel_Coord     center_point,
                 const   unsigned int    radius,
                 const   FrameSize&      frameSize
-        )
+        ) noexcept
             :   center_point    (center_point)
             ,   radius          (radius)
             ,   frameSize       (frameSize)
