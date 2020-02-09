@@ -12,6 +12,78 @@
 
 using namespace VNLM;
 
+static
+bool
+verify_radius(
+        const unsigned int radius,
+        const FrameSize&   frameSize )
+{
+    if ( 0U == radius )
+    {
+        return false;
+    }
+
+    if ( radius >= frameSize.size_x )
+    {
+        return false;
+    }
+
+    if ( radius >= frameSize.size_y )
+    {
+        return false;
+    }
+
+    return true;
+}
+
+static
+bool
+verify_params(
+        const NLMparams& params,
+        const FrameSize  frameSize )
+{
+    if ( false == verify_radius( params.patch_radius, frameSize ) )
+    {
+        return false;
+    }
+
+    if ( false == verify_radius( params.search_window_radius, frameSize ) )
+    {
+        return false;
+    }
+
+    if ( 0.0 > params.standard_deviation_of_noise )
+    {
+        return false;
+    }
+
+    if ( 0.0 >= params.filtering_parameter )
+    {
+        return false;
+    }
+
+    return true;
+}
+
+template <typename Pixel_Value_policy>
+bool
+NLMdenoiser::verify(
+        const   FrameSequence<Pixel_Value_policy>&  frameSequence,
+        const   NLMparams&                          params )
+{
+    if ( false == frameSequence.verify() )
+    {
+        return false;
+    }
+
+    if ( false == verify_params( params, frameSequence.getFrameSize() ) )
+    {
+        return false;
+    }
+
+    return true;
+}
+
 template <typename Pixel_Value_policy>
 void
 NLMdenoiser::Denoise(
@@ -19,6 +91,11 @@ NLMdenoiser::Denoise(
         Frame<Pixel_Value_policy>&                  result,
         const NLMparams&                            params )
 {
+    if ( false == verify( frameSequence, params ) )
+    {
+        return;
+    }
+
     denoise( frameSequence, result, params );
 }
 
@@ -144,47 +221,57 @@ NLMdenoiser::denoise(
 // grayscale
 
 template
+bool
+NLMdenoiser::verify<Color_Space_Grayscale>(
+        const FrameSequence<Color_Space_Grayscale>&,
+        const NLMparams& );
+template
 void
 NLMdenoiser::Denoise<Color_Space_Grayscale>(
-        const   FrameSequence<Color_Space_Grayscale>&,
+        const FrameSequence<Color_Space_Grayscale>&,
         Frame<Color_Space_Grayscale>&,
-        const NLMparams& params );
+        const NLMparams& );
 template
 void
 do_denoise<Color_Space_Grayscale>(
-        const   FrameSequence<Color_Space_Grayscale>&   frameSequence,
-        Frame<Color_Space_Grayscale>&           result,
-        Pixel_Range_Iterator b,
-        Pixel_Range_Iterator e,
-        const NLMparams& params );
+        const FrameSequence<Color_Space_Grayscale>&,
+        Frame<Color_Space_Grayscale>&,
+        Pixel_Range_Iterator,
+        Pixel_Range_Iterator,
+        const NLMparams& );
 template
 void
 NLMdenoiser::denoise<Color_Space_Grayscale>(
-        const   FrameSequence<Color_Space_Grayscale>&   frameSequence,
-        Frame<Color_Space_Grayscale>&           result,
-        const NLMparams& params );
+        const FrameSequence<Color_Space_Grayscale>&,
+        Frame<Color_Space_Grayscale>&,
+        const NLMparams& );
         
 // RGB
         
 template
+bool
+NLMdenoiser::verify<Color_Space_RGB>(
+        const FrameSequence<Color_Space_RGB>&,
+        const NLMparams& );
+template
 void
 NLMdenoiser::Denoise<Color_Space_RGB>(
-        const   FrameSequence<Color_Space_RGB>&,
+        const FrameSequence<Color_Space_RGB>&,
         Frame<Color_Space_RGB>&,
-        const NLMparams& params);
+        const NLMparams& );
 template
 void
 do_denoise<Color_Space_RGB>(
-        const   FrameSequence<Color_Space_RGB>& frameSequence,
-        Frame<Color_Space_RGB>&         result,
-        Pixel_Range_Iterator b,
-        Pixel_Range_Iterator e,
-        const NLMparams& params );
+        const FrameSequence<Color_Space_RGB>&,
+        Frame<Color_Space_RGB>&,
+        Pixel_Range_Iterator,
+        Pixel_Range_Iterator,
+        const NLMparams& );
 template
 void
 NLMdenoiser::denoise<Color_Space_RGB>(
-        const   FrameSequence<Color_Space_RGB>& frameSequence,
-        Frame<Color_Space_RGB>&         result,
-        const NLMparams& params );
+        const FrameSequence<Color_Space_RGB>&,
+        Frame<Color_Space_RGB>&,
+        const NLMparams& );
         
         

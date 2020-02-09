@@ -91,6 +91,42 @@ namespace VNLM
             VNLM_ASSERT( 0 < frames.size() )
             return frames[0].getFrameSize();
         }
+    public:
+        bool
+        verify() const noexcept
+        {
+            const unsigned int frameSequence_length = get_sequence_size();
+            if ( 0U == frameSequence_length )
+            {
+                return false;
+            }
+
+            const auto center_frame_Index = get_center_frame_index();
+
+            if ( center_frame_Index >= frameSequence_length )
+            {
+                return false;
+            }
+
+            const auto frameSize = getFrameSize();
+            if (    (0U == frameSize.size_x)
+                 || (0U == frameSize.size_y) )
+            {
+                return false;
+            }
+
+            for( unsigned int frame_ix=0U; frame_ix<frameSequence_length; ++frame_ix )
+            {
+                const auto _frameSize = get_frame( frame_ix ).getFrameSize();
+                if (   (frameSize.size_x != _frameSize.size_x)
+                    || (frameSize.size_y != _frameSize.size_y) )
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     
     private:
         FrameArray      frames;

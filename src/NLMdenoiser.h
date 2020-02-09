@@ -38,6 +38,12 @@ namespace VNLM
                 const   FrameSequence<Pixel_Value_policy>&  frameSequence,
                         Frame<Pixel_Value_policy>&          result,
                 const   NLMparams&                          params );
+    private:
+        template <typename Pixel_Value_policy>
+        bool
+        verify(
+                const   FrameSequence<Pixel_Value_policy>&  frameSequence,
+                const   NLMparams&                          params );
     };
 
 }
