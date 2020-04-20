@@ -15,12 +15,11 @@ namespace VNLM
     template <typename T>
     struct NormL2
     {
-        static
         constexpr
         float
-        compute(
+        operator()(
                 const T v1,
-                const T v2) noexcept
+                const T v2) const noexcept
         {
             return norm_sqr(v1-v2);
         }

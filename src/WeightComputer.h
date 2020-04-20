@@ -25,7 +25,7 @@ namespace VNLM
                 const FrameSequence<Pixel_Value_policy>&frameSequence,
                 const NLMparams&params)
         {
-            return PatchDistance_policy::compute(
+            return PatchDistance_policy()(
                         ix,
                         ix_s,
                         frameSequence,
@@ -43,7 +43,7 @@ namespace VNLM
                 const FrameSequence<Pixel_Value_policy>&frameSequence,
                 const NLMparams&params)
         {
-            return  DistributionFunction_policy::compute(
+            return  DistributionFunction_policy()(
                         computePatch<Pixel_Value_policy,Policies...>(
                             ix,
                             ix_s,

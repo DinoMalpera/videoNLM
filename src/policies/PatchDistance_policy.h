@@ -13,13 +13,12 @@ namespace VNLM
     struct Element2Element
     {
     public:
-        static
         double
-        compute(
+        operator()(
                 const Pixel_Range_Iterator&                 ix,
                 const Every_Pixel_in_SearchWindow_of_Every_Frame::iterator&  ix_s,
                 const FrameSequence<Pixel_Value_policy>&    frameSequence,
-                const NLMparams&                            params )
+                const NLMparams&                            params ) const
         {
                     double                      acc             = 0.0;
             const   Frame<Pixel_Value_policy>&  central_frame   = frameSequence.get_center_frame();
@@ -43,7 +42,7 @@ namespace VNLM
             {
                 VNLM_ASSERT( it_all != all_frames_iterator.end() )  // it_central and it_all should be in perfect sync
             
-                acc += DistanceFunction::compute(
+                acc += DistanceFunction()(
                             central_frame[ it_central.getPixelCoord() ],
                             target_frame [ it_all.getPixelCoord() ] );
             }

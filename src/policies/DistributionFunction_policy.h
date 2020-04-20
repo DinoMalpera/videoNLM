@@ -9,11 +9,10 @@ namespace VNLM
 
     struct Step
     {
-        static
         double 
-        compute(
+        operator()(
                 const double x,
-                const NLMparams& params )
+                const NLMparams& params ) const
         {
             if ( x < params.standard_deviation_of_noise )
             {
@@ -25,11 +24,10 @@ namespace VNLM
     
     struct Gauss
     {
-        static
         double 
-        compute(
+        operator()(
                 const double x,
-                const NLMparams& params )
+                const NLMparams& params ) const
         {
             return
                 exp(
