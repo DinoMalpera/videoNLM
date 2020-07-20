@@ -13,6 +13,9 @@ namespace VNLM
     struct Element2Element
     {
     public:
+        /*  Computes the distance between the two patches,
+        *   centered at ix and ix_s.
+        */
         double
         operator()(
                 const Pixel_Range_Iterator&                 ix,

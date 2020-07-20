@@ -115,7 +115,7 @@ do_denoise(
     
     for( auto ix = b; ix!=e; ++ix )
     {
-        // denoise a pixel ix
+        // denoise the pixel ix
 
         auto totalWeight        = 0.0;
         Pixel_Value_policy acc  = (Pixel_Value_policy) 0.0;
