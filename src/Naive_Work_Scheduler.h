@@ -18,6 +18,9 @@ namespace VNLM
 	    {
 	    }
 	public:
+            /*  Given a thread index, computes the range of frame pixels
+            *   that are assigned to that thread.
+            */
 	    auto
 	    get_range(
 		    const unsigned int thr ) const

@@ -115,17 +115,21 @@ do_denoise(
     
     for( auto ix = b; ix!=e; ++ix )
     {
-        auto totalWeight    = 0.0;
-        Pixel_Value_policy acc  = (Pixel_Value_policy)0.0;
+        // denoise a pixel ix
+
+        auto totalWeight        = 0.0;
+        Pixel_Value_policy acc  = (Pixel_Value_policy) 0.0;
+        // iterate through all the pixels within the search window of every frame
         for( auto ix_s : Every_Pixel_in_SearchWindow_of_Every_Frame( frameSize, sequence_size, params.search_window_radius, ix.getPixelCoord() ) )
         {
-            const double weight = WeightComputer::weight<
-                Pixel_Value_policy,
-                Gauss,
-                Element2Element<
+            const double weight =
+                WeightComputer::weight<
                     Pixel_Value_policy,
-                    NormL2<Pixel_Value_policy>>
-                >
+                    Gauss,
+                    Element2Element<
+                        Pixel_Value_policy,
+                        NormL2<Pixel_Value_policy>>
+                    >
                 (
                     ix,
                     ix_s,
@@ -168,6 +172,8 @@ NLMdenoiser::denoise(
     std::vector<std::thread> threads;
     
     const Naive_Work_Scheduler  work_scheduler( frameSize, numThreads );
+
+    // assign work to threads
 
     for( unsigned int thr=0; thr<numThreads; ++thr )
     {

@@ -1,6 +1,6 @@
 #pragma once
 
-/*  Standard NonCopyable mixin.
+/*  Standard NonCopyable Base.
  * */
 class NonCopyable
 {

@@ -135,6 +135,8 @@ namespace VNLM
         }
         
     private:
+        /*  Computes the search window size, accounting for the frame border.
+        */
         static 
         unsigned int
         compute_search_window_size(

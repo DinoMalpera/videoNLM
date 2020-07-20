@@ -26,6 +26,10 @@ namespace VNLM
             ,   center_frame_index  ( size_of_sequence / 2U )
         {}
     public:
+        /*  Add frame to the end of the sequence.
+        *   If the sequence is full, a frame is removed from the front
+        *   of the sequence.
+        */
         void
         push_back(
                 const Frame<Pixel_Value_policy>& fr )
@@ -39,6 +43,9 @@ namespace VNLM
             frames.push_back( fr );
         }
     public:
+        /*  Get frame from the middle of the sequence.
+        *   This will usually be the frame we are denoising.
+        */
         const Frame<Pixel_Value_policy>&
         get_center_frame() const noexcept
         {
@@ -46,6 +53,10 @@ namespace VNLM
             return frames[center_frame_index];
         }
     public:
+        /*  Set which frame from the sequence is considered central.
+        *   This might be useful at the beginning or at the end of
+        *   the video clip.
+        */
         void
         set_center_frame_index(
                 const unsigned int _center_frame_index ) noexcept
@@ -92,6 +103,8 @@ namespace VNLM
             return frames[0].getFrameSize();
         }
     public:
+        /*  Verifies that the frame sequence is consistent.
+        */
         bool
         verify() const noexcept
         {

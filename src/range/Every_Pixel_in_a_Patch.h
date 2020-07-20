@@ -85,6 +85,9 @@ namespace VNLM
             }
             
         private:
+            /*  Checks whether the point is outside the frame border.
+            *   Any border; upper or lower. 
+            */
             static
             bool 
             is_border_case(
@@ -94,6 +97,8 @@ namespace VNLM
                 return _p >= frame_max;
             }
         private:
+            /*  Checks whether the point is below the lower frame border specifically.
+            */
             static 
             bool 
             is_lower_border(
@@ -103,6 +108,8 @@ namespace VNLM
                 return _p > frame_max_2;
             }
         private:
+            /*  Takes care of the case when the point is outside the frame border.
+            */
             static
             unsigned int
             remap_local_to_global_and_wrap(

@@ -39,6 +39,8 @@ namespace VNLM
                         Frame<Pixel_Value_policy>&          result,
                 const   NLMparams&                          params );
     private:
+        /*  Verify parameters and consistency.
+        */
         template <typename Pixel_Value_policy>
         bool
         verify(

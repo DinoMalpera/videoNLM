@@ -64,6 +64,8 @@ namespace VNLM
     // methods
     
     private:
+        /* Computes the frame 2D index
+        * */
         constexpr
         size_t
         compute_index(
