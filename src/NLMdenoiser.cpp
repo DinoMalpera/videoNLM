@@ -14,7 +14,8 @@
 
 using namespace VNLM;
 
-static
+namespace {
+
 bool
 verify_radius(
         const unsigned int radius,
@@ -38,7 +39,6 @@ verify_radius(
     return true;
 }
 
-static
 bool
 verify_params(
         const NLMparams& params,
@@ -67,7 +67,22 @@ verify_params(
     return true;
 }
 
-template <typename Pixel_Value_policy>
+void
+join_vector_of_threads(
+        std::vector<std::thread>& threads )
+{
+    std::for_each(
+        threads.begin(),
+        threads.end(),
+        [](auto& thr)
+        {
+            thr.join();
+        } );
+}
+
+}
+
+template <ComputableColor Pixel_Value_policy>
 bool
 NLMdenoiser::verify(
         const   FrameSequence<Pixel_Value_policy>&  frameSequence,
@@ -86,7 +101,7 @@ NLMdenoiser::verify(
     return true;
 }
 
-template <typename Pixel_Value_policy>
+template <ComputableColor Pixel_Value_policy>
 void
 NLMdenoiser::Denoise(
         const   FrameSequence<Pixel_Value_policy>&  frameSequence,
@@ -101,7 +116,7 @@ NLMdenoiser::Denoise(
     denoise( frameSequence, result, params );
 }
 
-template <typename Pixel_Value_policy>
+template <ComputableColor Pixel_Value_policy>
 void
 do_denoise(
         const   FrameSequence<Pixel_Value_policy>&  frameSequence,
@@ -144,21 +159,7 @@ do_denoise(
     }
 }
 
-static
-void
-join_vector_of_threads(
-        std::vector<std::thread>& threads )
-{
-    std::for_each(
-        threads.begin(),
-        threads.end(),
-        [](auto& thr)
-        {
-            thr.join();
-        } );
-}
-
-template <typename Pixel_Value_policy>
+template <ComputableColor Pixel_Value_policy>
 void
 NLMdenoiser::denoise(
         const   FrameSequence<Pixel_Value_policy>&  frameSequence,

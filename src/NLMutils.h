@@ -9,7 +9,6 @@ namespace VNLM
     /*  Square of a squareable type.
      * */
     template <typename T>
-    static
     constexpr
     T
     sqr(

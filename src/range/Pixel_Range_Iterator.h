@@ -30,8 +30,8 @@ namespace VNLM
                 const Pixel_Coord   pc,
                 const unsigned int  x_size
         ) noexcept
-            :   x   (pc.x)
-            ,   y   (pc.y)
+            :   x       (pc.x)
+            ,   y       (pc.y)
             ,   x_size  (x_size)
         {
             VNLM_ASSERT( x <= x_size )
@@ -49,7 +49,7 @@ namespace VNLM
         operator++() noexcept
         {
             ++x;
-            if ( x_size <= x )
+            if ( x_size <= x ) [[unlikely]]
             {
                 ++y;
                 x = 0U;

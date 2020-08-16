@@ -4,6 +4,7 @@
 #include "NLMcommon.h"
 #include "Frame.h"
 #include "range/Every_Pixel_in_SearchWindow_of_Every_Frame.h"
+#include "Policy_Contracts.h"
 
 namespace VNLM
 {
@@ -13,7 +14,7 @@ namespace VNLM
      *  As a frame is added to the sequence
      *  All frames (images) should be of the same size.
      * */
-    template <typename Pixel_Value_policy>
+    template <ComputableColor Pixel_Value_policy>
     class FrameSequence
     {
         using FrameArray = boost::circular_buffer<Frame<Pixel_Value_policy>>;

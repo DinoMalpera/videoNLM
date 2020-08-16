@@ -9,7 +9,7 @@
 namespace VNLM
 {
 
-    template <typename Pixel_Value_policy, typename DistanceFunction>
+    template <ComputableColor Pixel_Value_policy, typename DistanceFunction>
     struct Element2Element
     {
     public:

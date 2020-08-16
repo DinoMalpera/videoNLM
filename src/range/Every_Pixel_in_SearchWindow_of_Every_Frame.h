@@ -44,7 +44,7 @@ namespace VNLM
             operator++()
             {
                 ++frame_pixel_iterator;
-                if ( reached_end_of_search_window_for_current_frame() )
+                if ( reached_end_of_search_window_for_current_frame() ) [[unlikely]]
                 {
                     ++frame_index;
                     reset_frame_pixel_iterator();

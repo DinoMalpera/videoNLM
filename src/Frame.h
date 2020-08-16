@@ -3,6 +3,7 @@
 #include "NLMcommon.h"
 #include "Pixel_Coord.h"
 #include "FrameSize.h"
+#include "Policy_Contracts.h"
 
 namespace VNLM
 {
@@ -13,7 +14,7 @@ namespace VNLM
      *  in different color spaces.
      *  Image pixel data expected to be float [0.0f,1.0f].
      * */
-    template <typename pixel_value_type>
+    template <ComputableColor pixel_value_type>
     class Frame
     {
     private:

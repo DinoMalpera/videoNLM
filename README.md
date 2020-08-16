@@ -9,7 +9,7 @@ Implemented as in [paper by Buades](https://www.iro.umontreal.ca/~mignotte/IFT61
 
 ### Dependencies
 
-* C++17 ready compiler<br/>
+* C++20 ready compiler<br/>
 * Boost
 * gtest (optional)
 

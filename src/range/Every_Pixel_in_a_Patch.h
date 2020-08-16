@@ -57,11 +57,12 @@ namespace VNLM
             unsigned int
             getX() const noexcept
             {
-                const unsigned int ret = remap_local_to_global_and_wrap(
-                    it.getX(),
-                    swr_data.radius,
-                    swr_data.center_point.x,
-                    swr_data.frameSize.size_x );
+                const unsigned int ret =
+                    remap_local_to_global_and_wrap(
+                        it.getX(),
+                        swr_data.radius,
+                        swr_data.center_point.x,
+                        swr_data.frameSize.size_x );
                 VNLM_ASSERT( ret < swr_data.frameSize.size_x )
                 return ret;
             }
@@ -69,11 +70,12 @@ namespace VNLM
             unsigned int
             getY() const noexcept
             {
-                const unsigned int ret = remap_local_to_global_and_wrap(
-                    it.getY(),
-                    swr_data.radius,
-                    swr_data.center_point.y,
-                    swr_data.frameSize.size_y );
+                const unsigned int ret =
+                    remap_local_to_global_and_wrap(
+                        it.getY(),
+                        swr_data.radius,
+                        swr_data.center_point.y,
+                        swr_data.frameSize.size_y );
                 VNLM_ASSERT( ret < swr_data.frameSize.size_y )
                 return ret;
             }
@@ -119,7 +121,7 @@ namespace VNLM
                     const unsigned int frame_max ) noexcept
             {
                 const unsigned int _p = center_point - radius + p;
-                if ( is_border_case( _p, frame_max ) )
+                if ( is_border_case( _p, frame_max ) ) [[unlikely]]
                 {
                     if ( const unsigned int frame_max_2 = 2 * frame_max;
                          is_lower_border( _p, frame_max_2 ) )

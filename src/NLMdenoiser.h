@@ -1,12 +1,14 @@
 #pragma once
 
+#include "Policy_Contracts.h"
+
 namespace VNLM
 {
     
     // forward declarations
-    template <typename>
+    template <ComputableColor>
     class Frame;
-    template <typename>
+    template <ComputableColor>
     class FrameSequence;
     class NLMparams;
     
@@ -21,7 +23,7 @@ namespace VNLM
         // interface
         
     public:
-        template <typename Pixel_Value_policy>
+        template <ComputableColor Pixel_Value_policy>
         void
         Denoise(
                 const   FrameSequence<Pixel_Value_policy>&  frameSequence,
@@ -32,7 +34,7 @@ namespace VNLM
         // methods
                 
     private:
-        template <typename Pixel_Value_policy>
+        template <ComputableColor Pixel_Value_policy>
         void
         denoise(
                 const   FrameSequence<Pixel_Value_policy>&  frameSequence,
@@ -41,7 +43,7 @@ namespace VNLM
     private:
         /*  Verify parameters and consistency.
         */
-        template <typename Pixel_Value_policy>
+        template <ComputableColor Pixel_Value_policy>
         bool
         verify(
                 const   FrameSequence<Pixel_Value_policy>&  frameSequence,
