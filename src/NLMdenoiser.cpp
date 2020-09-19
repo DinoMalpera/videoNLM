@@ -67,19 +67,6 @@ verify_params(
     return true;
 }
 
-void
-join_vector_of_threads(
-        std::vector<std::thread>& threads )
-{
-    std::for_each(
-        threads.begin(),
-        threads.end(),
-        [](auto& thr)
-        {
-            thr.join();
-        } );
-}
-
 }
 
 template <ComputableColor Pixel_Value_policy>
@@ -170,7 +157,7 @@ NLMdenoiser::denoise(
     const unsigned int numThreads = std::thread::hardware_concurrency();
     VNLM_ASSERT( 0U != numThreads )
     
-    std::vector<std::thread> threads;
+    std::vector<std::jthread> threads;
     
     const Naive_Work_Scheduler  work_scheduler( frameSize, numThreads );
 
@@ -181,15 +168,13 @@ NLMdenoiser::denoise(
         auto [ b, e ] = work_scheduler.get_range( thr );
         
         threads.emplace_back(
-            std::thread(    do_denoise<Pixel_Value_policy>,
+            std::jthread(    do_denoise<Pixel_Value_policy>,
                             std::cref( frameSequence ),
                             std::ref(  result ),
                             b,
                             e,
                             params ));
     }
-    
-    join_vector_of_threads( threads );
 }
 
 // explicit template initializations for ColorSpace parameter
