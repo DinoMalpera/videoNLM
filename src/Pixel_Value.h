@@ -20,12 +20,12 @@ namespace VNLM
     class Color_Space_RGB
     {
     public:
-        Color_Space_RGB(){}
+        Color_Space_RGB() noexcept {}
     public:
         explicit
         Color_Space_RGB(
                 const double _
-        )
+        ) noexcept
             :   r   (_)
             ,   g   (_)
             ,   b   (_)
@@ -36,7 +36,7 @@ namespace VNLM
                 const float r,
                 const float g,
                 const float b
-        )
+        ) noexcept
             :   r   (r)
             ,   g   (g)
             ,   b   (b)     
@@ -44,14 +44,14 @@ namespace VNLM
     public:
         Color_Space_RGB
         operator*(
-                const double d )
+                const double d ) const noexcept
         {
             return Color_Space_RGB( r*d, g*d, b*d );
         }
     public: 
         Color_Space_RGB&
         operator+=(
-                const Color_Space_RGB rhs )
+                const Color_Space_RGB rhs ) noexcept
         {
             r += rhs.r;
             g += rhs.g;
@@ -62,14 +62,14 @@ namespace VNLM
     public:
         Color_Space_RGB
         operator/(
-                const double d ) const
+                const double d ) const noexcept
         {
             return Color_Space_RGB( r/d, g/d, b/d );
         }
     public:
         Color_Space_RGB
         operator-(
-                const Color_Space_RGB& rhs ) const
+                const Color_Space_RGB& rhs ) const noexcept
         {
             return Color_Space_RGB( r-rhs.r, g-rhs.g, b-rhs.b );
         }
@@ -83,7 +83,7 @@ namespace VNLM
     inline
     float
     norm_sqr(
-            const Color_Space_RGB& _ )
+            const Color_Space_RGB& _ ) noexcept
     {
         return sqr(_.r) + sqr(_.g) + sqr(_.b);
     }

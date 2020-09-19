@@ -7,7 +7,7 @@ namespace VNLM
 
     float
     norm_sqr(
-        const float _ )
+        const float _ ) noexcept
     {
         return sqr(_);
     }

@@ -24,7 +24,7 @@ namespace VNLM
                 const Pixel_Range_Iterator&                                 ix,
                 const Every_Pixel_in_SearchWindow_of_Every_Frame::iterator& ix_s,
                 const FrameSequence<Pixel_Value_policy>&                    frameSequence,
-                const NLMparams&                                            params)
+                const NLMparams&                                            params) noexcept
         {
             return PatchDistance_policy()(
                         ix,
@@ -42,7 +42,7 @@ namespace VNLM
                 const Pixel_Range_Iterator&                                 ix,
                 const Every_Pixel_in_SearchWindow_of_Every_Frame::iterator& ix_s,
                 const FrameSequence<Pixel_Value_policy>&                    frameSequence,
-                const NLMparams&                                            params)
+                const NLMparams&                                            params) noexcept
         {
             return  DistributionFunction_policy()(
                         computePatch<Pixel_Value_policy,Policies...>(

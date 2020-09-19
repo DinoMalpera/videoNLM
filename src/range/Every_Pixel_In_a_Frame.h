@@ -14,7 +14,7 @@ namespace VNLM
     public:
         Every_Pixel_In_a_Frame(
                 const FrameSize& _frameSize
-        )
+        ) noexcept
             :   frameSize   (_frameSize)
         {
         }

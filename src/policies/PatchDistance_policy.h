@@ -21,7 +21,7 @@ namespace VNLM
                 const Pixel_Range_Iterator&                 ix,
                 const Every_Pixel_in_SearchWindow_of_Every_Frame::iterator&  ix_s,
                 const FrameSequence<Pixel_Value_policy>&    frameSequence,
-                const NLMparams&                            params ) const
+                const NLMparams&                            params ) const noexcept
         {
                     double                      acc             = 0.0;
             const   Frame<Pixel_Value_policy>&  central_frame   = frameSequence.get_center_frame();

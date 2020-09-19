@@ -12,7 +12,7 @@ namespace VNLM
         double 
         operator()(
                 const double x,
-                const NLMparams& params ) const
+                const NLMparams& params ) const noexcept
         {
             if ( x < params.standard_deviation_of_noise )
             {
@@ -27,7 +27,7 @@ namespace VNLM
         double 
         operator()(
                 const double x,
-                const NLMparams& params ) const
+                const NLMparams& params ) const noexcept
         {
             return
                 exp(

@@ -47,7 +47,7 @@ namespace VNLM
             return data[ pos ];
         }
     public:
-        pixel_value_type
+        const pixel_value_type&
         operator[](
                 const Pixel_Coord ix ) const noexcept
         {

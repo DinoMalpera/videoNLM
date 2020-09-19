@@ -47,7 +47,7 @@ namespace VNLM
         bool
         verify(
                 const   FrameSequence<Pixel_Value_policy>&  frameSequence,
-                const   NLMparams&                          params );
+                const   NLMparams&                          params ) const;
     };
 
 }

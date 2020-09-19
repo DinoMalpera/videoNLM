@@ -67,42 +67,6 @@ verify_params(
     return true;
 }
 
-}
-
-template <ComputableColor Pixel_Value_policy>
-bool
-NLMdenoiser::verify(
-        const   FrameSequence<Pixel_Value_policy>&  frameSequence,
-        const   NLMparams&                          params )
-{
-    if ( false == frameSequence.verify() )
-    {
-        return false;
-    }
-
-    if ( false == verify_params( params, frameSequence.getFrameSize() ) )
-    {
-        return false;
-    }
-
-    return true;
-}
-
-template <ComputableColor Pixel_Value_policy>
-void
-NLMdenoiser::Denoise(
-        const   FrameSequence<Pixel_Value_policy>&  frameSequence,
-        Frame<Pixel_Value_policy>&                  result,
-        const NLMparams&                            params )
-{
-    if ( false == verify( frameSequence, params ) )
-    {
-        return;
-    }
-
-    denoise( frameSequence, result, params );
-}
-
 template <ComputableColor Pixel_Value_policy>
 void
 do_denoise(
@@ -110,7 +74,7 @@ do_denoise(
         Frame<Pixel_Value_policy>&                  result,
         Pixel_Range_Iterator                        b,
         const Pixel_Range_Iterator                  e,
-        const NLMparams&                            params)
+        const NLMparams&                            params) noexcept
 {
     const unsigned int sequence_size = frameSequence.get_sequence_size();
     const FrameSize& frameSize = frameSequence.getFrameSize();
@@ -144,6 +108,42 @@ do_denoise(
 
         result[ix.getPixelCoord()] = acc / totalWeight;
     }
+}
+
+}
+
+template <ComputableColor Pixel_Value_policy>
+bool
+NLMdenoiser::verify(
+        const   FrameSequence<Pixel_Value_policy>&  frameSequence,
+        const   NLMparams&                          params ) const
+{
+    if ( false == frameSequence.verify() )
+    {
+        return false;
+    }
+
+    if ( false == verify_params( params, frameSequence.getFrameSize() ) )
+    {
+        return false;
+    }
+
+    return true;
+}
+
+template <ComputableColor Pixel_Value_policy>
+void
+NLMdenoiser::Denoise(
+        const   FrameSequence<Pixel_Value_policy>&  frameSequence,
+        Frame<Pixel_Value_policy>&                  result,
+        const NLMparams&                            params )
+{
+    if ( false == verify( frameSequence, params ) )
+    {
+        return;
+    }
+
+    denoise( frameSequence, result, params );
 }
 
 template <ComputableColor Pixel_Value_policy>
@@ -185,7 +185,7 @@ template
 bool
 NLMdenoiser::verify<Color_Space_Grayscale>(
         const FrameSequence<Color_Space_Grayscale>&,
-        const NLMparams& );
+        const NLMparams& ) const;
 template
 void
 NLMdenoiser::Denoise<Color_Space_Grayscale>(
@@ -213,7 +213,7 @@ template
 bool
 NLMdenoiser::verify<Color_Space_RGB>(
         const FrameSequence<Color_Space_RGB>&,
-        const NLMparams& );
+        const NLMparams& ) const;
 template
 void
 NLMdenoiser::Denoise<Color_Space_RGB>(

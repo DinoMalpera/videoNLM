@@ -34,14 +34,14 @@ namespace VNLM
         public:
             constexpr
             iterator&
-            operator*()
+            operator*() noexcept
             {
                 return *this;
             }
         public:
             constexpr
             iterator&
-            operator++()
+            operator++() noexcept
             {
                 ++frame_pixel_iterator;
                 if ( reached_end_of_search_window_for_current_frame() ) [[unlikely]]
@@ -76,7 +76,7 @@ namespace VNLM
         private:
             constexpr
             bool
-            reached_end_of_search_window_for_current_frame()
+            reached_end_of_search_window_for_current_frame() const noexcept
             {
                 const bool fpi = (frame_pixel_iterator != frame_pixel_iterator_end);
                 return false == fpi;
@@ -84,7 +84,7 @@ namespace VNLM
         private:
             constexpr
             void
-            reset_frame_pixel_iterator()
+            reset_frame_pixel_iterator() noexcept
             {
                 frame_pixel_iterator = Pixel_Range_Iterator{ 0, 0, frame_pixel_iterator.get_x_size() };
             }
@@ -101,7 +101,7 @@ namespace VNLM
                 const unsigned int  sequence_length,
                 const unsigned int  search_window_radius,
                 const Pixel_Coord   window_center
-        )
+        ) noexcept
             :   sequence_length         (sequence_length)
             ,   search_window_size_x    (compute_search_window_size( search_window_radius, window_center.x, frameSize.size_x ))
             ,   search_window_size_y    (compute_search_window_size( search_window_radius, window_center.y, frameSize.size_y ))

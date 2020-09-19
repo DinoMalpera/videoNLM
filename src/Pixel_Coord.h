@@ -18,7 +18,7 @@ namespace VNLM
     Pixel_Coord
     operator+(
             const Pixel_Coord& lhs,
-            const Pixel_Coord& rhs )
+            const Pixel_Coord& rhs ) noexcept
     {
         return {    lhs.x + rhs.x,
                     lhs.y + rhs.y };
