@@ -77,7 +77,7 @@ do_denoise(
         const NLMparams&                            params) noexcept
 {
     const unsigned int sequence_size = frameSequence.get_sequence_size();
-    const FrameSize& frameSize = frameSequence.getFrameSize();
+    const FrameSize&   frameSize     = frameSequence.getFrameSize();
     
     for( auto ix = b; ix!=e; ++ix )
     {
@@ -136,7 +136,7 @@ void
 NLMdenoiser::Denoise(
         const   FrameSequence<Pixel_Value_policy>&  frameSequence,
         Frame<Pixel_Value_policy>&                  result,
-        const NLMparams&                            params )
+        const   NLMparams&                          params )
 {
     if ( false == verify( frameSequence, params ) )
     {

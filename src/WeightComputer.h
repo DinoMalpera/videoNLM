@@ -36,6 +36,7 @@ namespace VNLM
         template<   ComputableColor Pixel_Value_policy,
                     typename DistributionFunction_policy,
                     typename... Policies>
+        [[nodiscard]]
         static
         double
         weight(
