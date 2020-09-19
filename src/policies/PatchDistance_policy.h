@@ -29,11 +29,11 @@ namespace VNLM
             const   unsigned int                search_radius   = params.patch_radius;
             const   FrameSize&                  frameSize       = frameSequence.getFrameSize();
         
-            Every_Pixel_in_a_Patch central_frame_iterator(
+            const Every_Pixel_in_a_Patch central_frame_iterator(
                     ix.getPixelCoord(),
                     search_radius,
                     frameSize );
-            Every_Pixel_in_a_Patch all_frames_iterator(
+            const Every_Pixel_in_a_Patch all_frames_iterator(
                     ix_s.getPixelCoord(),
                     search_radius,
                     frameSize );
