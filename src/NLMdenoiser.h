@@ -48,6 +48,10 @@ namespace VNLM
         verify(
                 const   FrameSequence<Pixel_Value_policy>&  frameSequence,
                 const   NLMparams&                          params ) const;
+                
+    // state keeping members
+    //   STATE
     };
 
 }
+
