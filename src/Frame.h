@@ -61,6 +61,12 @@ namespace VNLM
         {
             return *frameSize;
         }
+    public:
+        const pixel_value_type* const
+        get_data_view() const noexcept
+        {
+            return data;
+        }
         
     // methods
     
