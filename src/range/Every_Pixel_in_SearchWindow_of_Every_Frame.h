@@ -114,7 +114,7 @@ namespace VNLM
         begin() const noexcept
         {
             return {    Pixel_Range_Iterator{ 0, 0, search_window_size_x },
-                        Pixel_Range_Iterator{ search_window_size_x, search_window_size_y, search_window_size_x },
+                        Pixel_Range_Iterator{ 0, search_window_size_y, search_window_size_x },
                         beginning_of_window,
                         0 };
         }
@@ -124,7 +124,7 @@ namespace VNLM
         end() const noexcept
         {
             const Pixel_Range_Iterator pir{
-                search_window_size_x,
+                0,
                 search_window_size_y,
                 search_window_size_x };
             

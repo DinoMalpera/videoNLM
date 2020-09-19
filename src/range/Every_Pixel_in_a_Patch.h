@@ -171,7 +171,7 @@ namespace VNLM
         end() const noexcept
         {
             const unsigned int range = 2 * radius + 1;
-            return iterator{    Pixel_Range_Iterator{ range, range, range },
+            return iterator{    Pixel_Range_Iterator{ 0, range, range },
                                 *this };
         }
     
