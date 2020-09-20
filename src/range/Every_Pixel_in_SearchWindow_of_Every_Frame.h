@@ -113,10 +113,11 @@ namespace VNLM
         iterator
         begin() const noexcept
         {
-            return {    Pixel_Range_Iterator{ 0, 0, search_window_size_x },
-                        Pixel_Range_Iterator{ 0, search_window_size_y, search_window_size_x },
-                        beginning_of_window,
-                        0 };
+            return {
+                .frame_pixel_iterator     = Pixel_Range_Iterator{ 0, 0, search_window_size_x },
+                .frame_pixel_iterator_end = Pixel_Range_Iterator{ 0, search_window_size_y, search_window_size_x },
+                .beginning_of_window      = beginning_of_window,
+                .frame_index              = 0 };
         }
     public:
         constexpr
@@ -128,10 +129,11 @@ namespace VNLM
                 search_window_size_y,
                 search_window_size_x };
             
-            return {    pir,
-                        pir,
-                        beginning_of_window,
-                        sequence_length };
+            return {
+                .frame_pixel_iterator     = pir,
+                .frame_pixel_iterator_end = pir,
+                .beginning_of_window      = beginning_of_window,
+                .frame_index              = sequence_length };
         }
         
     private:
@@ -167,9 +169,8 @@ namespace VNLM
                 const Pixel_Coord   window_center ) noexcept
         {
             return {
-                        ( window_center.x >= search_window_radius ) ? (window_center.x - search_window_radius) : 0U,
-                        ( window_center.y >= search_window_radius ) ? (window_center.y - search_window_radius) : 0U
-                    };
+                .x = ( window_center.x >= search_window_radius ) ? (window_center.x - search_window_radius) : 0U,
+                .y = ( window_center.y >= search_window_radius ) ? (window_center.y - search_window_radius) : 0U };
         }
     
     private:

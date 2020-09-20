@@ -33,7 +33,7 @@ namespace VNLM
         */
         void
         push_back(
-                const Frame<Pixel_Value_policy>& fr ) noexcept
+                const Frame<Pixel_Value_policy>& fr )
         {
             VNLM_ASSERT( frames.size()
                          ?

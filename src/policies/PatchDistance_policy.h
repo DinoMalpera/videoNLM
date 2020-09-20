@@ -39,7 +39,7 @@ namespace VNLM
                     frameSize );
         
             auto it_central = central_frame_iterator.begin();
-            auto it_all = all_frames_iterator.begin();
+            auto it_all     = all_frames_iterator.begin();
         
             for( ;  it_central != central_frame_iterator.end(); ++it_central, ++it_all )
             {

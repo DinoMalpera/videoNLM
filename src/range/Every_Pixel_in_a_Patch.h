@@ -83,7 +83,7 @@ namespace VNLM
             Pixel_Coord
             getPixelCoord() const noexcept
             {
-                return { getX(), getY() };
+                return { .x=getX(), .y=getY() };
             }
             
         private:

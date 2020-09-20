@@ -23,20 +23,20 @@ namespace VNLM
         Pixel_Range_Iterator
         begin() const noexcept
         {
-            return { 0U, 0U, frameSize.size_x };
+            return { .x=0U, .y=0U, .x_size=frameSize.size_x };
         }
     public:
         constexpr
         Pixel_Range_Iterator
         end() const noexcept
         {
-            return {    0U,
-                        frameSize.size_y,
-                        frameSize.size_x };
+            return {    .x     = 0U,
+                        .y     = frameSize.size_y,
+                        .x_size= frameSize.size_x };
         }
     
     private:
         const FrameSize&    frameSize;
     };
-
 }
+
