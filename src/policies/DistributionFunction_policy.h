@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../NLMparams.h"
+#include "../NLMutils.h"
 #include <cmath>
 #include <algorithm>
 
@@ -31,9 +32,9 @@ namespace VNLM
         {
             return
                 exp(
-                    - std::max( x - 2 * params.standard_deviation_of_noise, 0.0 )
+                    - sqr(x)
                     /
-                    params.filtering_parameter );
+                    params.standard_deviation_of_noise );
         }
     };
 
