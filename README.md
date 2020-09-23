@@ -46,7 +46,7 @@ FrameSequence<Color_Space_RGB> frameSequence;
 frameSequence.push_back( fr );
 
 NLMdenoiser nlm;
-nlm.Denoise( frameSequence, outputPic );
+nlm.Denoise( frameSequence, outputPic, params );
 ```
 
 
