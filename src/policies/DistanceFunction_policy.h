@@ -5,6 +5,7 @@
 namespace VNLM
 {
 
+    inline
     float
     norm_sqr(
         const float _ ) noexcept

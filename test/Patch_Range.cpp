@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <src/range/Patch_Range.h>
+#include <src/range/Every_Pixel_in_a_Patch.h>
 #include "Test_Utils.h"
 
 using namespace VNLM;
@@ -22,7 +22,7 @@ TEST( PatchRangeTest, Basics)
 {
     const auto [ x_c, y_c, x_max, y_max, radius, frameSize ]
         = test_params( 5U, 3U, 10U, 8U, 3U );
-    const Patch_Range patch_range(
+    const Every_Pixel_in_a_Patch patch_range(
         Pixel_Coord{ x_c, y_c },
         radius,
         frameSize );
@@ -32,7 +32,7 @@ TEST( PatchRangeTest, Basics)
 
     ASSERT_EQ( b.getX(), x_c-radius );
     ASSERT_EQ( b.getY(), y_c-radius );
-    ASSERT_EQ( e.getX(), x_c+radius+1 );
+    ASSERT_EQ( e.getX(), x_c-radius );
     ASSERT_EQ( e.getY(), y_c+radius+1 );
 
     ASSERT_EQ( b!=e, true );
@@ -43,7 +43,7 @@ TEST( PatchRangeTest, Operators)
 {
     const auto [ x_c, y_c, x_max, y_max, radius, frameSize ]
         = test_params( 5U, 3U, 10U, 8U, 3U );
-    const Patch_Range patch_range(
+    const Every_Pixel_in_a_Patch patch_range(
         Pixel_Coord{ x_c, y_c },
         radius,
         frameSize );
@@ -63,7 +63,7 @@ TEST( PatchRangeTest, LoopBasic)
 {
     const auto [ x_c, y_c, x_max, y_max, radius, frameSize ]
         = test_params( 5U, 3U, 10U, 8U, 3U );
-    const Patch_Range patch_range(
+    const Every_Pixel_in_a_Patch patch_range(
         Pixel_Coord{ x_c, y_c },
         radius,
         frameSize );
@@ -92,7 +92,7 @@ TEST( PatchRangeTest, LoopCrossingLeftUp)
 {
     const auto [ x_c, y_c, x_max, y_max, radius, frameSize ]
         = test_params( 1U, 1U, 10U, 8U, 3U );
-    const Patch_Range patch_range(
+    const Every_Pixel_in_a_Patch patch_range(
         Pixel_Coord{ x_c, y_c },
         radius,
         frameSize );
@@ -122,7 +122,7 @@ TEST( PatchRangeTest, LoopCrossingRightBottom)
 
     const auto [ x_c, y_c, x_max, y_max, radius, frameSize ]
         = test_params( 9U, 6U, 10U, 8U, 3U );
-    const Patch_Range patch_range(
+    const Every_Pixel_in_a_Patch patch_range(
         Pixel_Coord{ x_c, y_c },
         radius,
         frameSize );

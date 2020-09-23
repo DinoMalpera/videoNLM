@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <src/range/FrameSequence_Pixel_Range.h>
+#include <src/range/Every_Pixel_in_SearchWindow_of_Every_Frame.h>
 #include "Test_Utils.h"
 
 using namespace VNLM;
@@ -14,7 +14,7 @@ test_params(
         const Pixel_Coord   window_center )
 {
     const FrameSize frameSize{ x_max, y_max };
-    const FrameSequence_Pixel_Range fpr{ frameSize, sequence_length, search_window_radius, window_center };
+    const Every_Pixel_in_SearchWindow_of_Every_Frame fpr{ frameSize, sequence_length, search_window_radius, window_center };
 
     return std::tuple( x_max, y_max, fpr );
 }
@@ -36,7 +36,7 @@ TEST( FrameSequencePixelRangeTest, Basics)
 
     ASSERT_EQ( b_it.x, 0 );
     ASSERT_EQ( b_it.y, 0 );
-    ASSERT_EQ( e_it.x, x_max );
+    ASSERT_EQ( e_it.x, 0 );
     ASSERT_EQ( e_it.y, y_max );
 
     ASSERT_EQ( b!=e, true );

@@ -10,7 +10,6 @@ namespace VNLM
         unsigned int    patch_radius;
         unsigned int    search_window_radius;
         float           standard_deviation_of_noise;
-        float           filtering_parameter;
     };
 
 }

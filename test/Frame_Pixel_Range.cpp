@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <src/range/Frame_Pixel_Range.h>
+#include <src/range/Every_Pixel_In_a_Frame.h>
 #include "Test_Utils.h"
 
 using namespace VNLM;
@@ -18,7 +18,7 @@ test_params(
 TEST( FramePixelRangeTest, Basics)
 {
     const auto [ x_max, y_max, frameSize ] = test_params( 5U, 3U );
-    const Frame_Pixel_Range frame_pixel_range( frameSize );
+    const Every_Pixel_In_a_Frame frame_pixel_range( frameSize );
     
     const auto b = frame_pixel_range.begin();
     const auto e = frame_pixel_range.end();
@@ -35,7 +35,7 @@ TEST( FramePixelRangeTest, Basics)
 TEST( FramePixelRangeTest, Operators)
 {
     const auto [ x_max, y_max, frameSize ] = test_params( 5U, 3U );
-    const Frame_Pixel_Range frame_pixel_range( frameSize );
+    const Every_Pixel_In_a_Frame frame_pixel_range( frameSize );
 
     const auto b = frame_pixel_range.begin();
     const auto e = frame_pixel_range.end();
@@ -53,7 +53,7 @@ TEST( FramePixelRangeTest, Operators)
 TEST( FramePixelRangeTest, Loop)
 {
     const auto [ x_max, y_max, frameSize ] = test_params( 5U, 3U );
-    const Frame_Pixel_Range frame_pixel_range( frameSize );
+    const Every_Pixel_In_a_Frame frame_pixel_range( frameSize );
 
     const auto b = frame_pixel_range.begin();
     const auto e = frame_pixel_range.end();

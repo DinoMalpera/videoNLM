@@ -59,11 +59,6 @@ verify_params(
         return false;
     }
 
-    if ( 0.0 >= params.filtering_parameter )
-    {
-        return false;
-    }
-
     return true;
 }
 
